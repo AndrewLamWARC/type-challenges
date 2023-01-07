@@ -9,7 +9,6 @@ type cases = [
   Expect<Equal<Push<['1', 2, '3'], boolean>, ['1', 2, '3', boolean]>>,
 ]
 
-
 // @ts-expect-error
 type error = Push<1, 1>
 
