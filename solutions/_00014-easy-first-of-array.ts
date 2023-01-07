@@ -1,4 +1,5 @@
-// Type 
+// Generic type constraint
+// Conditional types 
 type First<T extends unknown[]> = T extends [] ? never : T[0]
 
 type A = First<[3, 2, 1]>
