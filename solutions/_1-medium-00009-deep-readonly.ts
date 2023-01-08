@@ -13,6 +13,14 @@ type DeepReadonly01<T> = {
     : DeepReadonly<T[U]> // Recursion 
 }
 
+// This should work but does not
+// https://www.reddit.com/r/typescript/comments/tq3m4f/the_difference_between_object_and_recordstring/
+type DeepReadonly02<T> = {
+  readonly [U in keyof T]: T[U] extends Record<PropertyKey, unknown>
+    ? DeepReadonly<T[U]> // Recursion for objects 
+    : T[U] // Everything else 
+}
+
 type E1 = DeepReadonly<X1> 
 
 /* _____________ Test Cases _____________ */
