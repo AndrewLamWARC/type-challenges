@@ -21,7 +21,15 @@ type DeepReadonly02<T> = {
     : T[U] // Everything else 
 }
 
-type E1 = DeepReadonly<X1> 
+// Elegant but fails second test case
+type DeepReadonly03<T> = keyof T extends never
+  ? T
+  : { 
+      readonly [k in keyof T]: DeepReadonly<T[k]> 
+    };
+
+type E1 = DeepReadonly<X1>
+type E2 = DeepReadonly<X2> 
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
