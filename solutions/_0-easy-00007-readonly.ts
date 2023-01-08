@@ -1,6 +1,5 @@
-/* _____________ Your Code Here _____________ */
-
-// See readonly modifier in ts handbook
+// readonly modifier in ts handbook
+// Mapped types for constructing new types from existing type
 type MyReadonly<T> = {
   readonly [U in keyof T] : T[U]
 }

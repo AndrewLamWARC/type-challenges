@@ -2,12 +2,10 @@
 // Conditional types 
 type First<T extends unknown[]> = T extends [] ? never : T[0]
 
-type A = First<[3, 2, 1]>
+type A1 = First<[3, 2, 1]>
 
-/*
-type First<T extends unknown[]> = T[0] // 1st attempt
+type FirstWontWork01<T extends unknown[]> = T[0] 
 type B = First<[]> // undefined - expect never
-*/
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
