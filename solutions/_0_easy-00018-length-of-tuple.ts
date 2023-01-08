@@ -1,4 +1,4 @@
-// extends readonly unknown[] - constrains to tuples *not* array
+// extends readonly unknown[] - constrains type to tuples *not* array
 // T.length does not work. Y is a type not an instance of tuple
 // T["length"] works. 
 type Length<T extends readonly unknown[]> = T['length']
