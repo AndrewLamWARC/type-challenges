@@ -22,6 +22,7 @@ type DeepReadonly02<T> = {
 }
 
 // Elegant but fails second test case
+// Why it fails: https://stackoverflow.com/questions/68693054/what-is-extends-never-used-for/68693367#68693367
 type DeepReadonly03<T> = keyof T extends never
   ? T
   : { 
