@@ -1,3 +1,5 @@
+// This type is very useful. Builder pattern. 
+
 // Add 1 generic type to Chainable. U is the object type that Chainable type operates on. Defaults to {} empty object.
 // Add 2 generic types to option prop. K for key and V for value
 // Constrain K to only accept strings (PropertyKey)
