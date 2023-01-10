@@ -1,7 +1,20 @@
 // Good explanation
 // https://github.com/type-challenges/type-challenges/issues/614
+
+// More reasonable to me
 type Permutation<T, C = T> =
   // Check source type T is not empty. Stop distributivity with square brackets
+  // https://github.com/microsoft/TypeScript/issues/23182 
+  [T] extends [never] 
+    ? []
+    // Don't care about type, care about distribution over union. For-loop for type unions 
+    : C extends C
+      // Exclude current type from source union
+      ? [C, ...Permutation<Exclude<T, C>>]
+      : never
+
+type Permutation01<T, C = T> =
+  // Check source type T is not empty. Stop distributivity with square brackets.
   // https://github.com/microsoft/TypeScript/issues/23182 
   [T] extends [never] 
     ? []
@@ -10,7 +23,7 @@ type Permutation<T, C = T> =
       // Exclude current type from source union
       ? [T, ...Permutation<Exclude<C, T>>]
       : [] 
-
+     
 type A1 = Permutation<'A' | 'B' | 'C'> 
 
 type H<T> = T extends never ? [] : [T]
