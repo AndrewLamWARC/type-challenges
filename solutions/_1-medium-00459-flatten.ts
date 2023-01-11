@@ -1,17 +1,27 @@
+type Flatten<T extends unknown[]> = // T[0] cannot extend unknown[] 
+  // infer Car and Cdr from T
+  T extends [infer Car, ...infer Cdr]
+    ? Car extends unknown[]
+      // Car is array. Flatten Car and store spread Car in U. Then do same to Cdr
+      ? [...Flatten<Car>, ...Flatten<Cdr>]
+      // Car is not array. Add Car to array and flatten Cdr with Car stored in U
+      : [Car, ...Flatten<Cdr>]
+    : [] 
+
 // Add type param T
 // Constrain T to array of unknowns
 // Add test for type error
 // Attempt 1 return T itself. Passes first 2 tests. Fails nested array tests
 // Attempt 2. Use recursion to process each item in array T
-type Flatten<T extends unknown[], U extends unknown[] = [] > =
+type Flatten01<T extends unknown[], U extends unknown[] = [] > =
   // infer Car and Cdr from T
   T extends [infer Car, ...infer Cdr]
     ? Car extends unknown[]
       // Car is array. Flatten Car and store spread Car in U. Then do same to Cdr
-      ? [...Flatten<Car, [...U, ...Car]>, ...Flatten<Cdr, [...U, ...Car]>]
+      ? [...Flatten01<Car, [...U, ...Car]>, ...Flatten01<Cdr, [...U, ...Car]>]
       // Car is not array. Add Car to array and flatten Cdr with Car stored in U
-      : [Car, ...Flatten<Cdr, [...U, Car]>]
-    : [] 
+      : [Car, ...Flatten01<Cdr, [...U, Car]>]
+    : []
 
 type A1 = Flatten<[1, 2, 3, 4]>
 type A2 = Flatten<[1, [2]]>
