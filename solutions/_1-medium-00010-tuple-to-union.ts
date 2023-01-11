@@ -10,10 +10,14 @@ type TupleToUnion01<T extends unknown[]> = T[number]
 // This also works because of index signatures because ArrayLike is defined as
 interface MyArrayLike<T> {
   length: number;
-  [key: number]: T;
+  [key: number]: T; // Only key of type number allowed with value of type T 
 }
 // Therefore T[number] gets a union of all number index keys!
 // https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures
+
+// Keys can only be string | number | symbol
+// In this case, we've limited the key Key of MyArrayLike to number only
+// Therefore T[number] returns the value of the key in a union
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
