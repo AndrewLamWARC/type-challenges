@@ -1,5 +1,8 @@
 // Using the Uppercase built in type
-type MyCapitalize<S extends string> = S extends `${infer F}${infer R}` ? `${Uppercase<F>}${R}` : S
+type MyCapitalize<S extends string> = 
+  S extends `${infer F}${infer R}` 
+    ? `${Uppercase<F>}${R}` 
+    : S
 
 type Alphabet = {
   a: 'A',

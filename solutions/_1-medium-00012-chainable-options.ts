@@ -14,7 +14,9 @@
 // & { [Key in K]: V }
 // Intersect mapped type of current object. Stores current state of key/value pair of props in the Chainable type itself!
 type Chainable<U extends { [key: PropertyKey]: unknown} = {}> = {
-  option<K extends PropertyKey, V>(key: K extends keyof U ? never : K, value: V): 
+  option<K extends PropertyKey, V>(key: K extends keyof U 
+      ? never 
+      : K, value: V): 
     Chainable<Omit<U, K> & { [Key in K]: V }>
   get(): U
 }
@@ -22,7 +24,11 @@ type Chainable<U extends { [key: PropertyKey]: unknown} = {}> = {
 // Very elegant and does not use type intersection
 // But... does not detect that an option of same key has been called already
 type Chainable01<O extends { [key: PropertyKey]: unknown} = {}> = {
-  option<K extends PropertyKey, V>(key: K, value: V): Chainable01<{ [key in keyof O]: key extends keyof O ? O[key] : V }>
+  option<K extends PropertyKey, V>(key: K, value: V): 
+    Chainable01<{ [key in keyof O]: 
+      key extends keyof O 
+        ? O[key] 
+        : V }>
   get(): O
 }
 

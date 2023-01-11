@@ -6,8 +6,8 @@ type DeepReadonly<T> = {
     : DeepReadonly<T[U]> // Recursion 
 }
 
-// This works too. Although I don't fully understnd why primitive types are handled breaking recursion
-// Reason primitives are handled:
+// This works too.
+// Reason primitives are handled breaking recursion:
 // Mapped types already "skip" primitives by returning the input, and they automatically distribute over union, so you don't need to check for these yourself:
 type DeepReadonly01<T> = {
   readonly [U in keyof T]: T[U] extends Function

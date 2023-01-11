@@ -1,9 +1,9 @@
 // extends readonly unknown[] - constrains type to tuples *not* array
-// T.length does not work. Y is a type not an instance of tuple
-// T["length"] works. 
+// T.length does not work. T is a type not an instance of tuple
+// T["length"] works 
 type Length<T extends readonly unknown[]> = T['length']
 
-// Tuples/arrays are ultimately just objects in js. 
+// Tuples/arrays are ultimately just objects in js 
 // So abuse tuple/array's object's length prop and infer to get tuple's length  
 type Length1<T extends readonly unknown[]> = 
   T extends { length: infer L }

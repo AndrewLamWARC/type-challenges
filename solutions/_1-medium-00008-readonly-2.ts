@@ -1,10 +1,12 @@
 // 2 new type techniques
-// K extends keyof T = keyof T. Optional K type defauts to keyof T
+// K extends keyof T = keyof T. Optional K type that's keyof T + defauts to keyof T
 // & intersection to create readonly props and props T minus/exclude K which should just be copied. 
 type MyReadonly2<T, K extends keyof T = keyof T> = {
-  readonly [U in K]: T[U] // Deal with readonly props
+  // Deal with readonly props
+  readonly [U in K]: T[U] 
 } & {
-  [U in Exclude<keyof T, K>]: T[U] // We use builtin utility type Exclude here but could also use MyExclude
+  // Deal with rest of props using builtin utility type Exclude here but could also use MyExclude
+  [U in Exclude<keyof T, K>]: T[U] 
 }
 type A = MyReadonly2<Todo1>
 

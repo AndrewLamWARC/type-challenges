@@ -1,6 +1,7 @@
 // Generic type constraint to array of unknown types
 // Spread both arrays into single array
-type Concat<T extends unknown[], U extends unknown[]> = [...T, ...U]
+type Concat<T extends unknown[], U extends unknown[]> = 
+  [...T, ...U]
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

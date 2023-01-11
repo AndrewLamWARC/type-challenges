@@ -1,6 +1,8 @@
-type AppendArgument<Fn extends Function, A> = 
-  Fn extends (...args: infer P) => infer R // P is the function parameter(s) type (ArrayLike) and R is the return type
-    ? (...args: [...P, A]) => R // Construct new type with A appended to P spread into new function parameter array
+type AppendArgument<Fn extends Function, A> =
+  // P is the function parameter(s) type (ArrayLike) and R is the return type
+  Fn extends (...args: infer P) => infer R
+    // Construct new type with A appended to P spread into new function parameter array 
+    ? (...args: [...P, A]) => R 
     : Fn
 
 /* _____________ Test Cases _____________ */

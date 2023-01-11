@@ -1,5 +1,8 @@
 // Record<PropertyKey, unknown> is a synonym for object test
-type Merge<F extends Record<PropertyKey, unknown>, S extends Record<PropertyKey, unknown>> = {
+type Merge<
+  F extends Record<PropertyKey, unknown>, 
+  S extends Record<PropertyKey, unknown>> = {
+  
   [K in keyof F | keyof S] :
     K extends keyof S
       ? S[K]

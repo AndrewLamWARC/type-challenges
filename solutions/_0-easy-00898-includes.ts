@@ -1,8 +1,9 @@
-type Includes<T extends readonly unknown[], U> = T extends [infer First, ...infer Rest] // Infer first type and rest types
-  ? Equal<First, U> extends true // Is first type equal to U
-    ? true // Yes, true
-    : Includes<Rest, U> // No, recusrsive Includes check of U against Rest types
-  : false // Everything checked, false
+type Includes<T extends readonly unknown[], U> = 
+  T extends [infer First, ...infer Rest] // Infer first type and rest types
+    ? Equal<First, U> extends true // Is first type equal to U
+      ? true // Yes, true
+      : Includes<Rest, U> // No, recusrsive Includes check of U against Rest types
+    : false // Everything checked, false
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils"

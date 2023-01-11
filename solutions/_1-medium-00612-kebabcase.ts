@@ -1,7 +1,7 @@
 type KebabCase<S extends string> = 
   S extends `${infer Car}${infer Cdr}`
     ? Cdr extends Uncapitalize<Cdr>
-      // Not uppercase  character in Cdr, append and recurse char by char. Always lowercase all chars.
+      // Not uppercase character in Cdr, append and recurse char by char. Always lowercase all chars.
       ? `${Lowercase<Car>}${KebabCase<Cdr>}`
       // Uppercase 1st char in Cdr, append with hyphen and recurse char by char 
       : `${Lowercase<Car>}-${KebabCase<Cdr>}`

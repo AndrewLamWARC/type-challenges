@@ -1,6 +1,9 @@
 // Similar to First except we can destructure array to rest of first and Last. 
 // We don't use rest of first so assign to discard type variable
-type Last<T extends unknown[]> = T extends [...infer _, infer Last] ? Last : never
+type Last<T extends unknown[]> = 
+  T extends [...infer _, infer Cdr] 
+    ? Cdr 
+    : never
 
 type A = Last<[3, 2, 1]>
 

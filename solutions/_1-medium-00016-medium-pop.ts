@@ -1,7 +1,10 @@
 // T extends [...infer AllButLast, infer _] Conditional type to infer all but last elements in array. 
 // If it can infer then return AllButLast
 // Else it is an empty array so return empty array
-type Pop<T extends any[]> = T extends [...infer AllButLast, infer _] ? AllButLast : []
+type Pop<T extends any[]> = 
+  T extends [...infer AllButLast, infer _] 
+    ? AllButLast 
+    : []
 
 type T1 = [3, 2, 1]
 type T2 = ["a", "b", "c", "d"]

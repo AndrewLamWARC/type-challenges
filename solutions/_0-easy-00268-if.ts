@@ -1,4 +1,7 @@
-type If<C extends boolean, T, F> = C extends true ? T : F
+type If<C extends boolean, T, F> = 
+  C extends true 
+    ? T 
+    : F
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils"

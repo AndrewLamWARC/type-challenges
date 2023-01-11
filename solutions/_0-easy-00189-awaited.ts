@@ -1,9 +1,13 @@
 // Infer the inner type as U
 type MyAwaited<T extends PromiseLike<any>> = T extends PromiseLike<infer U> 
-  ? U extends PromiseLike<unknown> // Is U a PromiseLike of unknown
-    ? MyAwaited<U>                 // Yes, recursively call MyAwaited on U
-    : U                            // No, U is not a PromiseLike. Return U
-  : never                          // T is not a PromiseLike. Return never. Type error 
+  // Is U a PromiseLike of unknown
+  ? U extends PromiseLike<unknown>
+    // Yes, recursively call MyAwaited on U 
+    ? MyAwaited<U>
+    // No, U is not a PromiseLike. Return U                 
+    : U
+  // T is not a PromiseLike. Return never. Type error                            
+  : never                           
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
