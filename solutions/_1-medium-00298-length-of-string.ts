@@ -8,6 +8,14 @@ type LengthOfString<S extends string, Accumulate extends string[] = []> =
 
 type A1 = LengthOfString<''>
 
+// 2 step process
+// Convert string to tuple in order to get length
+type StringToTuple<S extends string> = 
+  S extends `${infer _}${infer Cdr}` 
+    ? [S, ...StringToTuple<Cdr>] 
+    : []
+type LengthOfString01<S extends string> = StringToTuple<S>['length']
+
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
