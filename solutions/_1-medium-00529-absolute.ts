@@ -3,7 +3,7 @@
 // Output should be a **string**
 type Absolute<T extends number | string | bigint> =
   `${T}` extends `-${infer N}`
-    ? `${N}`
+    ? N
     : `${T}` 
 
 /* _____________ Test Cases _____________ */
