@@ -31,3 +31,13 @@ export type IsLower<T extends string> =
     T extends Uncapitalize<T>
         ? true
         : false
+
+// string | number | symbol are not index keys
+export type NonIndexKey<T> = 
+  string extends T
+    ? never
+    : number extends T
+      ? never
+      : symbol extends T
+        ? never
+        : T
