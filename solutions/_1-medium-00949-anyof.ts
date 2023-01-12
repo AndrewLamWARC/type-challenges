@@ -3,7 +3,10 @@ type FalseObject = { [P in any]: never }
 type FalseNumber = 0
 type FalseString = ''
 type Falsy = FalseNumber | FalseString | FalseArray | FalseObject | false | undefined | null
-type AnyOf<T extends readonly any[]> =
+
+type AnyOf<T extends any[]> = T[number] extends Falsy ? false : true
+
+type AnyOf01<T extends readonly any[]> =
   // Infer head of array into Car and rest of array into Cdr
   T extends [infer Car, ...infer Cdr]
     ? Car extends Falsy
