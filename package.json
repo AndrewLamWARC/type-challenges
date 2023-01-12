@@ -7,6 +7,7 @@
   "license": "MIT",
   "repository": "https://github.com/antfu/type-challenges.git",
   "scripts": {
+    "initialSetup": "pnpm i & pnpm generate",
     "readme": "esno ./scripts/readme.ts",
     "build": "esno ./scripts/build.ts",
     "generate": "esno ./scripts/generate-play.ts",
@@ -19,7 +20,8 @@
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
-    "lz-string": "^1.4.4"
+    "lz-string": "^1.4.4",
+    "pnpm": "^7.24.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.1",

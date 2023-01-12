@@ -18,6 +18,7 @@ importers:
       js-yaml: ^4.1.0
       lz-string: ^1.4.4
       picocolors: ^1.0.0
+      pnpm: ^7.24.3
       prompts: ^2.4.2
       typescript: ^4.7.4
       utility-types: ^3.10.0
@@ -27,6 +28,7 @@ importers:
       fs-extra: 10.1.0
       js-yaml: 4.1.0
       lz-string: 1.4.4
+      pnpm: 7.24.3
     devDependencies:
       '@antfu/eslint-config': 0.25.1_b5e7v2qnwxfo6hmiq56u52mz3e
       '@type-challenges/utils': link:utils
@@ -2708,6 +2710,12 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
     dev: true
+
+  /pnpm/7.24.3:
+    resolution: {integrity: sha512-0fpP1l16xOY8YwsATSLodNNBa7bitV1cNY475fioVLR7Thx5tkCtdp3xIlvZYX8ZoPtedLhGn3fICC409HQSNQ==}
+    engines: {node: '>=14.6'}
+    hasBin: true
+    dev: false
 
   /postcss-selector-parser/6.0.10:
     resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}

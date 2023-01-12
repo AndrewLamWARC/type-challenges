@@ -7,12 +7,18 @@ type TupleToUnion<T extends unknown[]> = T extends readonly [infer Car, ...infer
 // Too clever solution for me
 type TupleToUnion01<T extends unknown[]> = T[number]
 
+type TupleToUnionBroken<T extends unknown[]> = T[0]
+
+type T1 = TupleToUnion<[123, '456', true]>
+
 // This also works because of index signatures because ArrayLike is defined as
 interface MyArrayLike<T> {
   length: number;
   [key: number]: T; // Only key of type number allowed with value of type T 
 }
-// Therefore T[number] gets a union of all number index keys!
+
+// T[0] gets the value at key index 0
+// T[number] gets a union of all values for each key index!
 // https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures
 
 // Keys can only be string | number | symbol
