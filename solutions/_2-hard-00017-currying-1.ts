@@ -8,7 +8,6 @@ declare function curry<Fn>(fn: Fn): Fn extends (...args: any) => any
   ? Curry<Fn> 
   : Fn
 
-
 type Curry01<F extends Function> = 
   F extends (first: infer First, ...remaining: infer Rest) => infer Ret
     ? Rest['length'] extends 0
@@ -20,7 +19,6 @@ declare function curry01<F extends Function>(fn: F): Curry01<F>
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect, ExpectExtends } from '@type-challenges/utils'
-
 const curried1 = curry((a: string, b: number, c: boolean) => true)
 const curried2 = curry((a: string, b: number, c: boolean, d: boolean, e: boolean, f: string, g: boolean) => true)
 const curried3 = curry(() => true)

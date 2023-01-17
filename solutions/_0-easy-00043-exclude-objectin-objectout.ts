@@ -9,6 +9,12 @@ type MyExclude<T, U> =
     : T 
 
 type Result = MyExclude<"a" | "b" | "c", "a"> // 'b' | 'c'
+// Step by step breakdown of distribution of the union
+// "a" | "b" | "c" extends "a" ? never : "a" | "b" | "c"
+// ("a" extends "a" ? never : "a") | ("b" extends "a" ? never : "b") | ("c" extends "a" ? never : "c")
+// (never) | ("b") | ("c")
+// never | "b" | "c"
+// "b" | "c"
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils"
